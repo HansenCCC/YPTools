@@ -1,0 +1,4 @@
+#!/usr/bin/env ruby
+
+require "yptools"
+YPTools.cmd_dispatch(ARGV)
