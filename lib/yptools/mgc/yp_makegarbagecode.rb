@@ -268,9 +268,25 @@ def yp_tools_method_makeGarbage (suffix)
         return
     end
     
-    yp_method_rmdir yp_outPath
-    yp_method_mkdir yp_outPath
-    yp_method_makeGarbage yp_path, yp_outPath, suffix
+    yp_isDo = 1
+    
+    if File.exists?(yp_outPath)
+        yp_isDo = 0
+        yp_log_success "检测'#{yp_outPath}' 文件夹已经存在，是否覆盖？(Enter Yes Or No)' :"
+        val = $stdin.gets.chomp
+        
+        if val == 'Yes' || val == 'yes' || val == 'YES' || val == 'Y' || val == 'y' || val.length == 0
+            yp_isDo = 1
+        end
+    end
+    
+    if yp_isDo == 1
+        yp_method_rmdir yp_outPath
+        yp_method_mkdir yp_outPath
+        yp_method_makeGarbage yp_path, yp_outPath, suffix
+    else
+        yp_log_fail "操作已取消"
+    end
     
     yp_log_doing "🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀";
 end

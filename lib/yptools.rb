@@ -9,11 +9,11 @@ class YPTools
         cmd = argvs[0]
         case cmd
         when 'help'
-            YPTools.help
+            self.help
         when 'mgc'
             if argvs.size > 1
                 suffix = argvs[1]
-                YPTools.mgc suffix
+                self.mgc suffix
             else
                 yp_log_fail "'yptools mgc ..' 参数缺失"
                 self.help
@@ -21,15 +21,13 @@ class YPTools
         when 'install'
             if argvs.size > 1
                 name = argvs[1]
-                YPTools.install name
+                self.install name
             else
                 yp_log_fail "'yptools install ..' 参数缺失"
                 self.help
             end
-        when 'mvvm'
-            YPTools.mvvm
         else
-            YPTools.help
+            self.help
         end
         
     end
@@ -64,5 +62,5 @@ end
 #
 
 
-#YPTools.cmd_dispatch(ARGV)
+YPTools.cmd_dispatch(ARGV)
 

@@ -7,7 +7,16 @@ require_relative '../mgc/yp_makegarbagecode'
 class YPInstall
     
     def self.install(name)
-        
+        cmd = name
+        case cmd
+        when 'mvvm'
+            YPInstall.mvvm
+        else
+            yp_log_fail "'yptools install #{name}' 暂无，敬请期待"
+        end
+    end
+    
+    def self.mvvm
         templates_url = "git@github.com:HansenCCC/kMVVM.git"
         templates_path = Dir.pwd
         templates_name = "kMVVM"
@@ -27,7 +36,6 @@ class YPInstall
         yp_method_rmdir templates_path
         yp_log_doing "移除临时文件#{templates_path}"
         yp_log_success "安装#{templates_url}完成，重新打开Xcode才能生效"
-        
     end
     
 end
