@@ -19,6 +19,8 @@ And then execute:
 Or install it yourself as:
 
     $ gem install yptools
+    or
+    $ git clone https://github.com/HansenCCC/YPTools.git && cd YPTools && sh install.sh
 
 ## Usage
 
