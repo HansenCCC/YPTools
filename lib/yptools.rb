@@ -3,6 +3,7 @@ require_relative 'yptools/help/yp_help'
 require_relative 'yptools/log/yp_log'
 require_relative 'yptools/install/yp_install'
 require_relative 'yptools/update/yp_update'
+require_relative 'yptools/xcodeproj/yp_xcodeproj'
 
 class YPTools
     
@@ -29,6 +30,14 @@ class YPTools
             end
         when 'update'
             self.update
+        when 'xpj'
+            if argvs.size > 1
+                cmd = argvs[1]
+                self.xpj cmd
+            else
+                yp_log_fail "'yptools xpj ..' 参数缺失"
+                self.help
+            end
         else
             self.help
         end
@@ -51,7 +60,18 @@ class YPTools
         YPUpdate.update
     end
     
+    def self.xpj(cmd)
+        YPXcodeproj.xcodeproj(cmd)
+    end
+    
 end
+
+
+# xcode自动添加文件 > xcodeproj
+# 自动生成xcode icon
+# 垃圾代码自动添加
+# 自动打包功能
+# SDK自动生成
 
 #puts "🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀";
 #

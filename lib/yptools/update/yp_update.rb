@@ -10,6 +10,7 @@ class YPUpdate
       system("gem install colored")
       system("gem install bundler")
       system("gem install rake")
+      system("gem install xcodeproj")
       system("gem install yptools")
 
       yp_log_success "更新YPTools完成"

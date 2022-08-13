@@ -9,3 +9,8 @@ end
 def yp_log_doing (log)
     puts log.yellow
 end
+
+def yp_log_msg (log)
+    puts log.white
+end
+
