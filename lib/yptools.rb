@@ -2,6 +2,7 @@ require_relative 'yptools/mgc/yp_makegarbagecode'
 require_relative 'yptools/help/yp_help'
 require_relative 'yptools/log/yp_log'
 require_relative 'yptools/install/yp_install'
+require_relative 'yptools/update/yp_update'
 
 class YPTools
     
@@ -26,6 +27,8 @@ class YPTools
                 yp_log_fail "'yptools install ..' 参数缺失"
                 self.help
             end
+        when 'update'
+            self.update
         else
             self.help
         end
@@ -42,6 +45,10 @@ class YPTools
     
     def self.install(name)
         YPInstall.install(name)
+    end
+    
+    def self.update
+        YPUpdate.update
     end
     
 end

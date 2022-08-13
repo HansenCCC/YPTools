@@ -7,8 +7,9 @@ class YPHelp
       
       mgc: use [yptools mgc suffix] 在当前目录生成垃圾代码（当前目录需要有.xcworkspace或者.xcodeproj目录）
       
-      help: use [yptools help] 查看帮助
+      update: use [yptools update] 更新yptools
       
+      help: use [yptools help] 查看帮助
       
     }
   end
