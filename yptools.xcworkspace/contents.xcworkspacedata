@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <FileRef
+      location = "group:yptools.gemspec">
+   </FileRef>
+   <Group
+      location = "group:lib"
+      name = "lib">
+      <FileRef
+         location = "group:yptools.rb">
+      </FileRef>
+      <Group
+         location = "group:yptools"
+         name = "yptools">
+         <Group
+            location = "group:mgc"
+            name = "mgc">
+            <FileRef
+               location = "group:yp_makegarbagecode.rb">
+            </FileRef>
+         </Group>
+         <Group
+            location = "group:install"
+            name = "install">
+            <FileRef
+               location = "group:yp_install.rb">
+            </FileRef>
+         </Group>
+         <Group
+            location = "group:update"
+            name = "update">
+            <FileRef
+               location = "group:yp_update.rb">
+            </FileRef>
+         </Group>
+         <Group
+            location = "group:xcodeproj"
+            name = "xcodeproj">
+            <FileRef
+               location = "group:yp_xcodeproj.rb">
+            </FileRef>
+         </Group>
+         <Group
+            location = "group:log"
+            name = "log">
+            <FileRef
+               location = "group:yp_log.rb">
+            </FileRef>
+         </Group>
+         <Group
+            location = "group:help"
+            name = "help">
+            <FileRef
+               location = "group:yp_help.rb">
+            </FileRef>
+         </Group>
+      </Group>
+   </Group>
+</Workspace>
