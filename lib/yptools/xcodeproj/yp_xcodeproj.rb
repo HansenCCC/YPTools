@@ -16,46 +16,9 @@ class YPXcodeproj
     end
     
     def self.message
-#        yp_log_doing "🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀"
-#        project_path = '/Users/Hansen/Desktop/lehuo/PrivateDiary.xcodeproj'
-#        project = Xcodeproj::Project.open(project_path)
-#
-#        project.targets.each do |target|
-#            puts target.name
-#        end
-        
-        #     target = project.targets.first
-        #     files = target.source_build_phase.files.to_a.map do |pbx_build_file|
-        #         pbx_build_file.file_ref.real_path.to_s
-        #     end.select do |path|
-        #         path.end_with?(".m", ".mm", ".swift")
-        #     end.select do |path|
-        #         !File.exists?(path)
-        #     end
-        #
-        #     files = target.source_build_phase.files.to_a.map do |pbx_build_file|
-        #         pbx_build_file.file_ref.real_path.to_s
-        #     end.select do |path|
-        #         path.end_with?(".m", ".mm", ".swift")
-        #     end.select do |path|
-        #         !File.exists?(path)
-        #     end
-        #
-        #     puts files
-        
-        #     app_target = project.targets.first
-        #
-        #     puts app_target
-        #     new_group = project.new_group("CHSS")
-        #
-        #     header_ref = new_group.new_file('/Users/Hansen/Desktop/CHSS/CoverView+CHSS.h')
-        #     implm_ref = new_group.new_file('/Users/Hansen/Desktop/CHSS/CoverView+CHSS.m')
-        #     app_target.add_file_references([implm_ref])
-        #     project.save()
-        
+
     end
-    
-    
+        
     def self.check
         
         yp_log_doing "🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀";
@@ -184,7 +147,6 @@ end
 
 
 #xcodeproj工程配置脚本化 https://www.jianshu.com/p/67ab2522daa7
-
 
 ##        puts project.main_group.path
 #        files_m = target.source_build_phase.files.to_a.map do |pbx_build_file|

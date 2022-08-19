@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:install.sh">
+   </FileRef>
+   <FileRef
       location = "group:yptools.gemspec">
    </FileRef>
    <Group
@@ -13,6 +16,13 @@
       <Group
          location = "group:yptools"
          name = "yptools">
+         <Group
+            location = "container:"
+            name = "file">
+            <FileRef
+               location = "group:lib/yptools/file/yp_file.rb">
+            </FileRef>
+         </Group>
          <Group
             location = "group:mgc"
             name = "mgc">
