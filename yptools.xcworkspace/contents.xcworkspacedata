@@ -2,9 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:install.sh">
-   </FileRef>
-   <FileRef
       location = "group:yptools.gemspec">
    </FileRef>
    <Group
@@ -17,10 +14,24 @@
          location = "group:yptools"
          name = "yptools">
          <Group
-            location = "container:"
-            name = "file">
+            location = "group:file"
+            name = "ufct">
             <FileRef
-               location = "group:lib/yptools/file/yp_file.rb">
+               location = "group:/Users/Hansen/Desktop/yptools/lib/yptools/file/yp_updatecreatedate.rb">
+            </FileRef>
+         </Group>
+         <Group
+            location = "group:/Users/Hansen/Desktop/yptools/lib/yptools/xcodeproj"
+            name = "xcodeproj">
+            <FileRef
+               location = "group:/Users/Hansen/Desktop/yptools/lib/yptools/xcodeproj/yp_xcodeproj.rb">
+            </FileRef>
+         </Group>
+         <Group
+            location = "group:update"
+            name = "update">
+            <FileRef
+               location = "group:yp_update.rb">
             </FileRef>
          </Group>
          <Group
@@ -35,20 +46,6 @@
             name = "install">
             <FileRef
                location = "group:yp_install.rb">
-            </FileRef>
-         </Group>
-         <Group
-            location = "group:update"
-            name = "update">
-            <FileRef
-               location = "group:yp_update.rb">
-            </FileRef>
-         </Group>
-         <Group
-            location = "group:xcodeproj"
-            name = "xcodeproj">
-            <FileRef
-               location = "group:yp_xcodeproj.rb">
             </FileRef>
          </Group>
          <Group

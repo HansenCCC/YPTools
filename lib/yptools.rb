@@ -4,28 +4,31 @@ require_relative 'yptools/log/yp_log'
 require_relative 'yptools/install/yp_install'
 require_relative 'yptools/update/yp_update'
 require_relative 'yptools/xcodeproj/yp_xcodeproj'
+require_relative 'yptools/file/yp_updatecreatedate'
 
 class YPTools
     
     def self.cmd_dispatch(argvs)
         cmd = argvs[0]
         case cmd
-        when 'help'
-            self.help
-        when 'mgc'
-            if argvs.size > 1
-                suffix = argvs[1]
-                self.mgc suffix
-            else
-                yp_log_fail "'yptools mgc ..' 参数缺失"
-                self.help
-            end
         when 'install'
             if argvs.size > 1
                 name = argvs[1]
                 self.install name
             else
                 yp_log_fail "'yptools install ..' 参数缺失"
+                self.help
+            end
+        when 'help'
+            self.help
+        when 'ufct'
+            self.ufct
+        when 'mgc'
+            if argvs.size > 1
+                suffix = argvs[1]
+                self.mgc suffix
+            else
+                yp_log_fail "'yptools mgc ..' 参数缺失"
                 self.help
             end
         when 'update'
@@ -46,6 +49,12 @@ class YPTools
     
     def self.help
         YPHelp.message
+    end
+    
+    def self.ufct
+        path = `pwd`
+        path = path.sub("\n","")
+        yp_updatereateDate path
     end
     
     def self.mgc(suffix)

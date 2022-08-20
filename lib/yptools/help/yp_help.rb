@@ -9,6 +9,8 @@ class YPHelp
       
       update: use [yptools update] 更新yptools
       
+      ufct: use [yptools ufct] 更新当前目录下面文件后缀为.h|.m 的文件创建时间
+      
       xpj: use [yptools xpj ...] use xcodeproj api
            use [yptools xpj check] 检查当前目录项目文件是否存在引用的问题
       
