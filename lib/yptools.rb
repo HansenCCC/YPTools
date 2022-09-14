@@ -5,6 +5,7 @@ require_relative 'yptools/install/yp_install'
 require_relative 'yptools/update/yp_update'
 require_relative 'yptools/xcodeproj/yp_xcodeproj'
 require_relative 'yptools/file/yp_updatecreatedate'
+require_relative 'yptools/package/yp_package'
 
 class YPTools
     
@@ -29,6 +30,22 @@ class YPTools
                 self.mgc suffix
             else
                 yp_log_fail "'yptools mgc ..' 参数缺失"
+                self.help
+            end
+        when 'install'
+            if argvs.size > 1
+                name = argvs[1]
+                self.install name
+            else
+                yp_log_fail "'yptools install ..' 参数缺失"
+                self.help
+            end
+        when 'package'
+            if argvs.size > 1
+                filePath = argvs[1]
+                self.package filepath
+            else
+                yp_log_fail "'yptools package ..' 参数缺失"
                 self.help
             end
         when 'update'
@@ -65,6 +82,10 @@ class YPTools
         YPInstall.install(name)
     end
     
+    def self.package(filepath)
+        YPPackage.analysis(filepath)
+    end
+    
     def self.update
         YPUpdate.update
     end
@@ -81,6 +102,7 @@ end
 # 垃圾代码自动添加
 # 自动打包功能
 # SDK自动生成
+# ipa 自动解析
 
 #puts "🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀";
 #
