@@ -7,6 +7,8 @@ class YPHelp
       
       mgc: use [yptools mgc suffix] 在当前目录生成垃圾代码（当前目录需要有.xcworkspace或者.xcodeproj目录）
       
+      showipa: use [yptools showipa ...] 用于解析ipa文件
+      
       update: use [yptools update] 更新yptools
       
       ufct: use [yptools ufct] 更新当前目录下面文件后缀为.h|.m 的文件创建时间

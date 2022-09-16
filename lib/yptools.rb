@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 require_relative 'yptools/mgc/yp_makegarbagecode'
 require_relative 'yptools/help/yp_help'
 require_relative 'yptools/log/yp_log'
@@ -40,9 +42,12 @@ class YPTools
                 yp_log_fail "'yptools install ..' 参数缺失"
                 self.help
             end
-        when 'package'
-            if argvs.size > 1
-                filePath = argvs[1]
+        when 'showipa'
+            if argvs.size > 2
+                filepath = argvs[1]
+                self.package(filepath,0)
+            elsif argvs.size > 1
+                filepath = argvs[1]
                 self.package filepath
             else
                 yp_log_fail "'yptools package ..' 参数缺失"
@@ -82,8 +87,8 @@ class YPTools
         YPInstall.install(name)
     end
     
-    def self.package(filepath)
-        YPPackage.analysis(filepath)
+    def self.package(filepath, delete = 1)
+        YPPackage.analysis(filepath,delete)
     end
     
     def self.update
