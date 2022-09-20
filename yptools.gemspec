@@ -21,5 +21,6 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "minitest", "~> 5.0"
   spec.add_development_dependency "colored", "~> 1.2"
   spec.add_development_dependency "fileutils", "~> 1.1.0"
+  spec.add_development_dependency "plist", "~> 3.6.0"
   
 end
