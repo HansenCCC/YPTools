@@ -1,45 +1,185 @@
-# Yptools
+YPTools
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/yptools`. To experiment with that code, run `bin/console` for an interactive prompt.
+[![Build Status](https://img.shields.io/badge/Github-QMKKXProduct-brightgreen.svg)](https://github.com/HansenCCC/YPTools)
+[![Build Status](https://img.shields.io/badge/platform-ios-orange.svg)](https://github.com/HansenCCC/YPTools)
+[![Build Status](https://img.shields.io/badge/HansenCCC-Github-blue.svg)](https://github.com/HansenCCC)
+[![Build Status](https://img.shields.io/badge/HansenCCC-知乎-lightgrey.svg)](https://www.zhihu.com/people/EngCCC)
+[![Build Status](https://img.shields.io/badge/已上架AppStore-Apple-success.svg)](https://apps.apple.com/cn/app/ios%E5%AE%9E%E9%AA%8C%E5%AE%A4/id1568656582)
 
-TODO: Delete this and the text above, and describe your gem
+## What's YPTools? 
+
+最近在学Ruby，就用Ruby写了个 gem 库来玩玩，偏向 iOS Objective-C 开发者设计的。
+
+> YPTools 能干嘛？
+
+- [x] 为 Xcode 创建 OC 语言的 mvvm 的模板
+- [x] 快速解析 IPA 文件
+- [x] 混淆中给 OC 代码注入大量垃圾代码
+- [x] 混淆中更新当前目录下面文件后缀为 .h|.m 的文件创建时间
+- [x] 检查工程是否存在引用的问题
 
 ## Installation
 
-Add this line to your application's Gemfile:
+用终端执行以下安装命令
 
-```ruby
-gem 'yptools'
+```sh
+$ gem install yptools
 ```
 
-And then execute:
+## Quickstart
 
-    $ bundle
+### $ yptools help
 
-Or install it yourself as:
+> 安装之后，可以通过【yptools help】命令来查看帮助文档
 
-    $ gem install yptools
-    or
-    $ git clone https://github.com/HansenCCC/YPTools.git && cd YPTools && sh install.sh
+```
+install: use [yptools install mvvm] 为 Xcode 创建 OC 语言的 mvvm 的模板
 
-## Usage
+mgc: use [yptools mgc suffix] 在当前目录生成垃圾代码（当前目录需要有 .xcworkspace 或者 .xcodeproj 目录）
 
-TODO: Write usage instructions here
+showipa: use [yptools showipa ...] 用于解析 IPA 文件
 
-## Development
+update: use [yptools update] 更新 yptools
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake test` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+ufct: use [yptools ufct] 更新当前目录下面文件后缀为 .h|.m 的文件创建时间
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+xpj: use [yptools xpj ...] use xcodeproj api
+     use [yptools xpj check] 检查当前目录项目文件是否存在引用的问题
 
-## Contributing
+help: use [yptools help] 查看帮助
+```
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/yptools. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+### $ yptools install mvvm
 
-## License
+> 使用此命令，可以为 Xcode 创建 OC 语言的 mvvm 的模板。
+> 
+> 下图2 中，Subclass of 需要填 UIVIewController 或 其子类。
 
-The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
+<img src="https://pic2.zhimg.com/80/v2-2197cdd300016d9bf2591d3cf8bcdc55.png" width="700">
 
-## Code of Conduct
+### $ yptools mgc ...
 
-Everyone interacting in the Yptools project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/[USERNAME]/yptools/blob/master/CODE_OF_CONDUCT.md).
+> 混淆注入垃圾代码行不行我不知道，倒是可以试试。
+
+```sh
+yptools mgc suffix
+
+🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀
+当前目录 /Users/hansen/iOS/QMKKXProduct
+垃圾代码生成目录 /Users/hansen/iOS/QMKKXProduct/suffix
+后缀 suffix
+2022-10-13 15:06:06.358538 +0800 生成 KKUploadImageService+suffix.h、KKUploadImageService+suffix.m 完成
+2022-10-13 15:06:06.359202 +0800 生成 KKNetworkPostedService+suffix.h、KKNetworkPostedService+suffix.m 完成
+2022-10-13 15:06:06.359464 +0800 生成 KKFindPostedRequestModel+suffix.h、KKFindPostedRequestModel+suffix.m 完成
+2022-10-13 15:06:06.359735 +0800 生成 KKPostedIssueRequestModel+suffix.h、KKPostedIssueRequestModel+suffix.m 完成
+....
+....
+....
+🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀
+```
+
+### $ yptools ufct
+
+> 更新当前目录下所有的 .h | .m 为后缀的文件创建时间。
+
+### $ yptools showipa ...
+
+> 当你需要解压 IPA 时，或许你可以用一下它（命令末尾空格多加个任何字符可以不移除临时目录）
+
+```sh
+➜  yptools showipa wechat.ipa
+
+将ipa解压到临时目录./ipa-20221013151157-424
+./ipa-20221013151157-424/Payload/xxxxxxxx.app
+./ipa-20221013151157-424/Payload/xxxxxxxx.app/Info.plist
+./ipa-20221013151157-424/Payload/xxxxxxxx.app/embedded.mobileprovision
+./ipa-20221013151157-424/Payload/xxxxxxxx.app/mobileprovision.plist
+============================================================
+ 输出描述文件embedded.mobileprovision
+./ipa-20221013151157-424/Payload/xxxxxxxx.app/mobileprovision.plist
+
+ 程序名称:	xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+ 团队名称:	xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+ 创建时间:	2022-04-06T01:25:03+00:00
+ 过期时间:	2023-04-06T01:25:03+00:00
+ 系统平台:	["iOS"]
+
+ udids
+ xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+ xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+ xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+ xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+ xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+ xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+ xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+ xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+============================================================
+ 输出Info.plist文件Info.plist
+./ipa-20221013151157-424/Payload/xxxxxxxx.app/Info.plist
+
+ CFBundleDisplayName:	xxxxxxxx
+ CFBundleIdentifier:	xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+ CFBundleVersion:	202210131118
+
+============================================================
+移除临时目录./ipa-20221013151157-424
+```
+
+### $ yptools xpj check
+
+> 检查当前目录项目文件是否存在引用的问题
+
+```sh
+yptools xpj check
+
+🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀
+当前目录 /Users/hansen/iOS/QMKKXProduct
+检查/Users/hansen/iOS/QMKKXProduct/QMKKXProduct.xcodeproj项目是否有异常文件
+发现以下 targets，需要分析哪个？
+1、QMKKXProduct
+2、QMKKXProductDev
+QMKKXProduct
+开始解析target:'QMKKXProduct'
+正在检测项目引用的文件是否存在:
+请注意，以下'9个'文件不存在:
+QMKKXProductDev.app -> ${BUILT_PRODUCTS_DIR}/QMKKXProductDev.app
+QMKKXProduct.app -> ${BUILT_PRODUCTS_DIR}/QMKKXProduct.app
+StoreKit.framework -> ${SDKROOT}/System/Library/Frameworks/StoreKit.framework
+...
+...
+...
+正在检测'.m'文件引用问题:
+请注意，以下'189个'文件没有被引用:
+KKIDCardScanBackgroundView+suffix.m -> /Users/hansen/iOS/QMKKXProduct/suffix/KKIDCardScanBackgroundView+suffix.m
+KKFileManagerViewController+suffix.m -> /Users/hansen/iOS/QMKKXProduct/suffix/KKFileManagerViewController+suffix.m
+KKDistrict+suffix.m -> /Users/hansen/iOS/QMKKXProduct/suffix/KKDistrict+suffix.m
+...
+...
+...
+🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀
+```
+
+### $ yptools update
+
+> update
+
+## Author
+
+chenghengsheng, 2534550460@qq.com
+
+## Log
+
+```
+2022.09.04  1.0.11版本，优化一下安装流程；
+2022.09.16  1.0.8版本，增加【yptools shopipa ..】命令，用于快速预览ipa一些信息；
+2022.08.20  1.0.7版本，增加【yptools ufct】更新当前目录下面文件后缀为.h|.m 的文件创建时间；
+2022.08.14  1.0.6版本，增加【yptools xpj check】 命令用于检测 xcode 项目索引问题；
+2022.08.13  1.0.5版本，增加【yptools update】 命令用于 yptools 更新；
+2022.08.02  1.0.4版本，修复一些bug，提高性能；
+2022.08.08  1.0.3版本，fix: 优化一些代码逻辑；【yptools mgc ...】流程优化；
+2022.07.29  1.0.2版本，增加一些依赖库；
+2022.07.29  1.0.1版本，新增安装【yptools install mvvm】为xcode创建OC语言的mvvm的模板；新增【yptools mgc ...】在当前目录生成垃圾代码（当前目录需要有.xcworkspace或者.xcodeproj目录）；新增【yptools help】使用文档；
+2022.07.16  1.0.0版本，新的版本从这里开始；
+
+```
