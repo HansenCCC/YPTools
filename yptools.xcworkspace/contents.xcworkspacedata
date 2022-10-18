@@ -14,6 +14,13 @@
          location = "group:yptools"
          name = "yptools">
          <Group
+            location = "group:autocre"
+            name = "autocre">
+            <FileRef
+               location = "group:yp_autocre.rb">
+            </FileRef>
+         </Group>
+         <Group
             location = "group:package"
             name = "package">
             <FileRef

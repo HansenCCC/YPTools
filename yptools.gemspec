@@ -23,5 +23,6 @@ Gem::Specification.new do |spec|
   spec.add_dependency "fileutils"
   spec.add_dependency "plist"
   spec.add_dependency "xcodeproj"
+  spec.add_dependency "json"
   
 end

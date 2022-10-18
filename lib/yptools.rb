@@ -8,12 +8,21 @@ require_relative 'yptools/update/yp_update'
 require_relative 'yptools/xcodeproj/yp_xcodeproj'
 require_relative 'yptools/file/yp_updatecreatedate'
 require_relative 'yptools/package/yp_package'
+require_relative 'yptools/autocre/yp_autocre'
 
 class YPTools
     
     def self.cmd_dispatch(argvs)
         cmd = argvs[0]
         case cmd
+        when 'autocre'
+            if argvs.size > 1
+                name = argvs[1]
+                self.autocre name
+            else
+                yp_log_fail "'yptools autocre ..' 参数缺失"
+                self.help
+            end
         when 'install'
             if argvs.size > 1
                 name = argvs[1]
@@ -99,6 +108,10 @@ class YPTools
         YPXcodeproj.xcodeproj(cmd)
     end
     
+    def self.autocre(name)
+        YPAutoCreate.createObjcSQL(name)
+    end
+    
 end
 
 
@@ -107,7 +120,7 @@ end
 # 垃圾代码自动添加
 # 自动打包功能
 # SDK自动生成
-# ipa 自动解析
+# 根据db文件，自动创建OC数据库
 
 #puts "🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀";
 #
@@ -125,5 +138,5 @@ end
 #
 
 
-#YPTools.cmd_dispatch(ARGV)
+YPTools.cmd_dispatch(ARGV)
 
