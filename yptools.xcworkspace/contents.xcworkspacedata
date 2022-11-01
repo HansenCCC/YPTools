@@ -8,7 +8,7 @@
       location = "group:lib"
       name = "lib">
       <FileRef
-         location = "group:yptools.rb">
+         location = "group:/Users/hansen/iOS/yptools/lib/yptools.rb">
       </FileRef>
       <Group
          location = "group:yptools"
