@@ -12,7 +12,7 @@ YPTools
 
 > YPTools 能干嘛？
 
-- [x] 自动创建数据库管理类
+- [x] 根据 json 创建数据库管理类（依赖于<FMDB/FMDB.h>框架）
 - [x] 为 Xcode 创建 OC 语言的 mvvm 的模板
 - [x] 快速解析 IPA 文件
 - [x] 混淆中给 OC 代码注入大量垃圾代码
@@ -35,8 +35,8 @@ $ gem install yptools
 
 ```
 autocre: use [yptools autocre ...] 自动化工具命令
-         use [yptools autocre -objc ...] 根据 json 自动创建 Objective-C 数据库操作文件 .h|.m 文件。（依赖三方库 FMDB ）
-         use [yptools autocre -init] 构建数据库操作文件的json模板
+         use [yptools autocre -init] 构建数据库操作文件的 json 模板
+         use [yptools autocre -objc ...] 根据 json 自动创建 Objective-C 数据库管理文件 .h|.m 文件。（依赖三方库 FMDB ）
 
 install: use [yptools install mvvm] 为 Xcode 创建 OC 语言的 mvvm 的模板
 
@@ -52,6 +52,20 @@ xpj: use [yptools xpj ...] use xcodeproj api
      use [yptools xpj check] 检查当前目录项目文件是否存在引用的问题
 
 help: use [yptools help] 查看帮助
+```
+
+### $ yptools autocre ...
+
+> 使用 `yptools autocre -init` 命令，创建一个模板。
+
+```sh
+yptools autocre -init
+```
+
+> 使用 `yptools autocre -objc <#filePath.json#>` 命令，根据 `<#filePath.json#>`  json文件创建 Objective-C 数据库管理文件 .h|.m 文件。
+
+```sh
+yptools autocre -objc YpImMessage.json
 ```
 
 ### $ yptools install mvvm
