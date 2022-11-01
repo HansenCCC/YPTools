@@ -33,6 +33,10 @@ $ gem install yptools
 > 安装之后，可以通过【yptools help】命令来查看帮助文档
 
 ```
+autocre: use [yptools autocre ...] 自动化工具命令
+         use [yptools autocre -objc ...] 根据 json 自动创建 Objective-C 数据库操作文件 .h|.m 文件。（依赖三方库 FMDB ）
+         use [yptools autocre -init] 构建数据库操作文件的json模板
+
 install: use [yptools install mvvm] 为 Xcode 创建 OC 语言的 mvvm 的模板
 
 mgc: use [yptools mgc suffix] 在当前目录生成垃圾代码（当前目录需要有 .xcworkspace 或者 .xcodeproj 目录）
@@ -171,6 +175,7 @@ chenghengsheng, 2534550460@qq.com
 ## Log
 
 ```
+2022.11.01  1.0.12版本，增加【yptools autocre ..】自动化工具命令，根据 json 文件自动创建管理数据库单例；
 2022.09.04  1.0.11版本，优化一下安装流程；
 2022.09.16  1.0.8版本，增加【yptools shopipa ..】命令，用于快速预览ipa一些信息；
 2022.08.20  1.0.7版本，增加【yptools ufct】更新当前目录下面文件后缀为.h|.m 的文件创建时间；
