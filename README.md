@@ -12,6 +12,7 @@ YPTools
 
 > YPTools 能干嘛？
 
+- [x] 自动创建数据管理类
 - [x] 为 Xcode 创建 OC 语言的 mvvm 的模板
 - [x] 快速解析 IPA 文件
 - [x] 混淆中给 OC 代码注入大量垃圾代码
