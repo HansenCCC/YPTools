@@ -5,6 +5,7 @@ PATH
       bundler
       colored
       fileutils
+      json
       minitest
       plist
       rake
@@ -20,6 +21,7 @@ GEM
     colored (1.2)
     colored2 (3.1.2)
     fileutils (1.4.1)
+    json (2.3.0)
     minitest (5.13.0)
     nanaimo (0.3.0)
     plist (3.6.0)

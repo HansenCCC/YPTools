@@ -44,6 +44,7 @@ class YPAutoCreate
     @yp_struct
     @yp_copyArray
     @yp_bool_autoincrement
+    @yp_need_log #控制是否使用YPLog 默认先关闭
     
     def self.createObjcSQL (filePath)
         
@@ -141,13 +142,20 @@ class YPAutoCreate
         yp_h_contents.push("\n")
         yp_h_contents.push '#import "FMDatabaseQueue.h"'
         yp_h_contents.push("\n")
+        yp_h_contents.push '#import <CoreGraphics/CoreGraphics.h>'
+        yp_h_contents.push("\n")
         yp_h_contents.push("\n")
         
         yp_m_contents.push "#import \"#{yp_json_module}Dao.h\""
         yp_m_contents.push("\n")
         yp_m_contents.push '#import <FMDB/FMDB.h>'
         yp_m_contents.push("\n")
-        yp_m_contents.push '#import "WDLog.h"'
+        if @yp_need_log == 1
+            yp_m_contents.push '#import <YPLog/YPLog.h>'
+            yp_m_contents.push("\n")
+        end
+        yp_m_contents.push("\n")
+        yp_m_contents.push("#define DATABASE_NAME @\"welldown_enc.sqlite\"")
         yp_m_contents.push("\n")
         yp_m_contents.push("\n")
         
@@ -2036,13 +2044,13 @@ class YPAutoCreate
         codes.push "    if(_dbQueue != nil) {"
         codes.push "        if([path isEqual:_path]) return YES;"
         codes.push "    }"
-        codes.push "_path = path;"
-        codes.push "NSString *dbDirectoryPath = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:path];"
-        codes.push " NSFileManager *fileManager = [NSFileManager defaultManager];"
-        codes.push "if (![fileManager fileExistsAtPath:dbDirectoryPath]) {"
-        codes.push "    [fileManager createDirectoryAtPath:dbDirectoryPath withIntermediateDirectories:YES attributes:nil error:nil];"
-        codes.push "}"
-        codes.push "NSString* dbPath = [dbDirectoryPath stringByAppendingPathComponent:DATABASE_NAME];"
+        codes.push "    _path = path;"
+        codes.push "    NSString *dbDirectoryPath = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:path];"
+        codes.push "    NSFileManager *fileManager = [NSFileManager defaultManager];"
+        codes.push "    if (![fileManager fileExistsAtPath:dbDirectoryPath]) {"
+        codes.push "        [fileManager createDirectoryAtPath:dbDirectoryPath withIntermediateDirectories:YES attributes:nil error:nil];"
+        codes.push "    }"
+        codes.push "    NSString* dbPath = [dbDirectoryPath stringByAppendingPathComponent:DATABASE_NAME];"
         codes.push "    _dbQueue = [FMDatabaseQueue databaseQueueWithPath:dbPath];"
         codes.push "}"
         codes.push "[self _createTables];"
@@ -2127,9 +2135,17 @@ class YPAutoCreate
         
         codes.push "            sql = @\" CREATE TABLE IF NOT EXISTS #{@yp_json_table}(#{createPropertyStr})\";"
         codes.push "            if ([db executeUpdate:sql]) {"
-        codes.push "                WDLogDebug(@\"create table #{@yp_json_table} success\");"
+        if @yp_need_log
+            codes.push "                YPLogDebug(@\"create table #{@yp_json_table} success\");"
+        elsif
+            codes.push "                NSLog(@\"create table #{@yp_json_table} success\");"
+        end
         codes.push "            } else {"
-        codes.push "                WDLogError(@\"create table #{@yp_json_table} failed\");"
+        if @yp_need_log
+            codes.push "                YPLogError(@\"create table #{@yp_json_table} failed\");"
+        elsif
+            codes.push "                NSLog(@\"create table #{@yp_json_table} failed\");"
+        end
         codes.push "                return;"
         codes.push "           }"
         codes.push "       }"
@@ -2142,9 +2158,17 @@ class YPAutoCreate
             codes.push "       if(!resultSet.next) {"
             codes.push "           sql = @\"CREATE INDEX #{property} ON #{@yp_json_table}(#{type.join(", ")})\";"
             codes.push "           if ([db executeUpdate:sql]) {"
-            codes.push "               WDLogDebug(@\"create index #{@yp_json_table} success\");"
+            if @yp_need_log
+                codes.push "               YPLogDebug(@\"create index #{@yp_json_table} success\");"
+            elsif
+                codes.push "               NSLog(@\"create index #{@yp_json_table} success\");"
+            end
             codes.push "           } else {"
-            codes.push "               WDLogError(@\"create table #{@yp_json_table} failed\");"
+            if @yp_need_log
+                codes.push "               YPLogError(@\"create table #{@yp_json_table} failed\");"
+            elsif
+                codes.push "               NSLog(@\"create table #{@yp_json_table} failed\");"
+            end
             codes.push "               return;"
             codes.push "           }"
             codes.push "       }"

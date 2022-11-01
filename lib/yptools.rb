@@ -9,6 +9,7 @@ require_relative 'yptools/xcodeproj/yp_xcodeproj'
 require_relative 'yptools/file/yp_updatecreatedate'
 require_relative 'yptools/package/yp_package'
 require_relative 'yptools/autocre/yp_autocre'
+require_relative 'yptools/autocre/yp_autoinit'
 
 class YPTools
     
@@ -18,7 +19,18 @@ class YPTools
         when 'autocre'
             if argvs.size > 1
                 name = argvs[1]
-                self.autocre name
+                case name
+                when '-init'
+                    self.autoinit
+                when '-objc'
+                    if argvs.size > 2
+                        path = argvs[2]
+                        self.autocre path
+                    else
+                        yp_log_fail "'yptools autocre -objc..' 参数缺失"
+                        self.help
+                    end
+                end
             else
                 yp_log_fail "'yptools autocre ..' 参数缺失"
                 self.help
@@ -112,6 +124,10 @@ class YPTools
         YPAutoCreate.createObjcSQL(name)
     end
     
+    def self.autoinit
+        YPAutoInit.createObjcInitJson
+    end
+    
 end
 
 
@@ -138,5 +154,5 @@ end
 #
 
 
-YPTools.cmd_dispatch(ARGV)
+#YPTools.cmd_dispatch(ARGV)
 

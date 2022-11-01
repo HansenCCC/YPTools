@@ -19,6 +19,9 @@
             <FileRef
                location = "group:yp_autocre.rb">
             </FileRef>
+            <FileRef
+               location = "group:yp_autoinit.rb">
+            </FileRef>
          </Group>
          <Group
             location = "group:package"
