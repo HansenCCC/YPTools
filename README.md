@@ -6,7 +6,7 @@ YPTools
 [![Build Status](https://img.shields.io/badge/HansenCCC-知乎-lightgrey.svg)](https://www.zhihu.com/people/EngCCC)
 [![Build Status](https://img.shields.io/badge/已上架AppStore-Apple-success.svg)](https://apps.apple.com/cn/app/ios%E5%AE%9E%E9%AA%8C%E5%AE%A4/id1568656582)
 
-## What's YPTools? (QQ群与我互动：701049272)
+## What's YPTools? 
 
 最近在学Ruby，就用Ruby写了个 gem 库来玩玩，偏向 iOS Objective-C 开发者设计的。
 
@@ -66,6 +66,52 @@ yptools autocre -init
 
 ```sh
 yptools autocre -objc YpImMessage.json
+```
+
+```objectivec
+#import <Foundation/Foundation.h>
+#import "FMDatabaseQueue.h"
+#import <CoreGraphics/CoreGraphics.h>
+
+@interface YpImMessage : NSObject <NSCopying>
+@property (nonatomic) long id;
+@property (nonatomic) int64_t msgid;
+@property (nonatomic, copy) NSString *content;
+@property (nonatomic, copy) NSDate *sendTime;
+@property (nonatomic) BOOL isMute;
+@property (nonatomic) CGFloat money;
+@end
+
+@interface YpIdContent : NSObject <NSCopying>
+@property (nonatomic) long id;
+@property (nonatomic, copy) NSString *content;
+@end
+
+@interface YpImMessageDao : NSObject
+
+// basic
++ (instancetype)get;
+- (BOOL)openWithPath:(NSString *)path;
+- (FMDatabaseQueue *)getQueue;
+- (BOOL)insertYpImMessage:(YpImMessage *)record aRid:(int64_t *)rid;
+- (BOOL)batchInsertYpImMessage:(NSArray *)records;
+- (BOOL)deleteYpImMessageByPrimaryKey:(int64_t)key;
+- (BOOL)deleteYpImMessageBySQLCondition:(NSString *)condition;
+- (BOOL)batchUpdateYpImMessage:(NSArray *)records;
+- (BOOL)updateYpImMessageByPrimaryKey:(int64_t)key aYpImMessage:(YpImMessage *)aYpImMessage;
+- (BOOL)updateYpImMessageBySQLCondition:(NSString *)condition aYpImMessage:(YpImMessage *)aYpImMessage;
+- (YpImMessage *)selectYpImMessageByPrimaryKey:(int64_t)key;
+- (NSArray *)selectYpImMessageBySQLCondition:(NSString *)condition;
+- (int)selectYpImMessageCount:(NSString *)condition;
+
+// struct
+- (BOOL)updateYpIdContentByPrimaryKey:(int64_t)key aYpIdContent:(YpIdContent *)aYpIdContent;
+- (BOOL)updateYpIdContentBySQLCondition:(NSString *)condition aYpIdContent:(YpIdContent *)aYpIdContent;
+- (YpIdContent *)selectYpIdContentByPrimaryKey:(int64_t)key;
+- (NSArray *)selectYpIdContentBySQLCondition:(NSString *)condition;
+
+@end
+
 ```
 
 ### $ yptools install mvvm
