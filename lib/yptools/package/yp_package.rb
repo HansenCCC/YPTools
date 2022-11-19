@@ -58,54 +58,67 @@ class YPPackage
         end
         
         puts yp_infoPlistPath
-        puts yp_mobileprovisionPath
         
-        yp_mobileprovisionPlistPath = yp_resourceFile_app + "/" + "mobileprovision.plist"
-        # 解析描述文件
-        yp_mobileprovisionDatum = `security cms -D -i #{yp_mobileprovisionPath}`
-        
-        puts yp_mobileprovisionPlistPath
-        
-        yp_plistCreateFile = File.new(yp_mobileprovisionPlistPath,"w+")
-        yp_plistCreateFile.syswrite(yp_mobileprovisionDatum)
-        yp_plistCreateFile.close
-                
-        yp_log_success "============================================================"
-        
-        yp_plist = Plist.parse_xml(yp_mobileprovisionPlistPath)
-        
-        yp_appIDName = yp_plist["AppIDName"]
-        yp_applicationIdentifierPrefix = yp_plist["ApplicationIdentifierPrefix"]
-        yp_creationDate = yp_plist["CreationDate"]
-        yp_platform = yp_plist["Platform"]
-        yp_isXcodeManaged = yp_plist["IsXcodeManaged"]
-        yp_developerCertificates = yp_plist["DeveloperCertificates"]
-        yp_DER_Encoded_Profile = yp_plist["DER-Encoded-Profile"]
-        yp_entitlements = yp_plist["Entitlements"]
-        yp_expirationDate = yp_plist["ExpirationDate"]
-        yp_name = yp_plist["Name"]
-        yp_provisionsAllDevices = yp_plist["ProvisionsAllDevices"]
-        yp_teamIdentifier = yp_plist["TeamIdentifier"]
-        yp_teamName = yp_plist["TeamName"]
-        yp_timeToLive = yp_plist["TimeToLive"]
-        yp_uUID = yp_plist["UUID"]
-        yp_version = yp_plist["Version"]
-        yp_provisionedDevices = yp_plist["ProvisionedDevices"]
-        
-        yp_log_success " 输出描述文件embedded.mobileprovision"
-        puts yp_mobileprovisionPlistPath
-        puts ''
-        yp_log_doing " 程序名称:\t#{yp_appIDName}"
-        yp_log_doing " 团队名称:\t#{yp_teamName}"
-        yp_log_doing " 创建时间:\t#{yp_creationDate}"
-        yp_log_fail " 过期时间:\t#{yp_expirationDate}"
-        yp_log_doing " 系统平台:\t#{yp_platform}"
-        
-        if yp_provisionedDevices.class == Array
-            yp_log_doing " \n udids"
-            for device in  yp_provisionedDevices
-                yp_log_doing " #{device}"
+        if yp_mobileprovisionPath.length > 0
+            puts yp_mobileprovisionPath
+            yp_mobileprovisionPlistPath = yp_resourceFile_app + "/" + "mobileprovision.plist"
+            # 解析描述文件
+            yp_mobileprovisionDatum = `security cms -D -i #{yp_mobileprovisionPath}`
+            
+            puts yp_mobileprovisionPlistPath
+            
+            yp_plistCreateFile = File.new(yp_mobileprovisionPlistPath,"w+")
+            yp_plistCreateFile.syswrite(yp_mobileprovisionDatum)
+            yp_plistCreateFile.close
+                    
+            yp_log_success "============================================================"
+            
+            yp_plist = Plist.parse_xml(yp_mobileprovisionPlistPath)
+            
+            if !yp_plist
+                yp_plist = {}
             end
+            
+            yp_appIDName = yp_plist["AppIDName"]
+            yp_applicationIdentifierPrefix = yp_plist["ApplicationIdentifierPrefix"]
+            yp_creationDate = yp_plist["CreationDate"]
+            yp_platform = yp_plist["Platform"]
+            yp_isXcodeManaged = yp_plist["IsXcodeManaged"]
+            yp_developerCertificates = yp_plist["DeveloperCertificates"]
+            yp_DER_Encoded_Profile = yp_plist["DER-Encoded-Profile"]
+            yp_entitlements = yp_plist["Entitlements"]
+            yp_expirationDate = yp_plist["ExpirationDate"]
+            yp_name = yp_plist["Name"]
+            yp_provisionsAllDevices = yp_plist["ProvisionsAllDevices"]
+            yp_teamIdentifier = yp_plist["TeamIdentifier"]
+            yp_teamName = yp_plist["TeamName"]
+            yp_timeToLive = yp_plist["TimeToLive"]
+            yp_uUID = yp_plist["UUID"]
+            yp_version = yp_plist["Version"]
+            yp_provisionedDevices = yp_plist["ProvisionedDevices"]
+            
+            yp_log_success " 输出描述文件embedded.mobileprovision"
+            puts yp_mobileprovisionPlistPath
+            puts ''
+            yp_log_doing " 程序名称:\t#{yp_appIDName}"
+            yp_log_doing " 团队名称:\t#{yp_teamName}"
+            yp_log_doing " 创建时间:\t#{yp_creationDate}"
+            yp_log_fail " 过期时间:\t#{yp_expirationDate}"
+            yp_log_doing " 系统平台:\t#{yp_platform}"
+            
+            if yp_provisionedDevices.class == Array
+                yp_log_doing " \n udids"
+                for device in  yp_provisionedDevices
+                    yp_log_doing " #{device}"
+                end
+            end
+            
+            puts ''
+            
+        else
+            yp_log_success "============================================================"
+            yp_log_success "==================== 来自 AppStore 下载 ===================="
+            
         end
         
 #        yp_log_msg " 标识符🚀:\t#{yp_applicationIdentifierPrefix}"
@@ -118,7 +131,6 @@ class YPPackage
 #        puts " 生存时间:\t#{yp_timeToLive}"
 #        puts " uuid🚀🚀:\t#{yp_uUID}"
 #        puts " 版本号🚀:\t#{yp_version}"
-        puts ''
         yp_log_success "============================================================"
         
 #        puts yp_infoPlistPath
