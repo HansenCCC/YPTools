@@ -1,6 +1,7 @@
 require_relative '../log/yp_log'
 require 'net/http'
 require 'json'
+require 'base64'
 
 class YPChatAI
     
@@ -14,9 +15,13 @@ class YPChatAI
         http = Net::HTTP.new(url.host, url.port)
         http.use_ssl = true 
         # 设置请求头
+        yp_token = "c2stTVRVMVZqeUdpNWxzYlU1TmNlU1pUM0JsYmtGSmNYam5iUk5ROENVYUd2QVR4WXpp"
+        # 将Base64字符串解码为原始二进制数据
+        decoded_data = Base64.decode64(yp_token).force_encoding("UTF-8")
+
         headers = {
             'Content-Type' => 'application/json',
-            'Authorization' => 'Bearer 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'
+            'Authorization' => 'Bearer ' + decoded_data
         }
         # 设置请body
         data = {
