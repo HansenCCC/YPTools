@@ -56,6 +56,14 @@ xpj: use [yptools xpj ...] use xcodeproj api
 help: use [yptools help] 查看帮助
 ```
 
+### $ yptools chatai ...
+
+> 你如果觉得打开chatGPT完整沟通起来麻烦，你可以使用 `yptools chatai ...` 命令，快速与chatGPT 会话。
+
+```
+yptools chatai '你好，chatGPT'
+```
+
 ### $ yptools autocre ...
 
 > 使用 `yptools autocre -init` 命令，创建一个模板。

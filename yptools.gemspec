@@ -4,7 +4,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
 Gem::Specification.new do |spec|
   spec.name          = "yptools"
-  spec.version       = '1.0.14'
+  spec.version       = '1.0.15'
   spec.authors       = ["chenghengsheng"]
   spec.email         = ["2534550460@qq.com"]
 
@@ -24,6 +24,5 @@ Gem::Specification.new do |spec|
   spec.add_dependency "plist"
   spec.add_dependency "xcodeproj"
   spec.add_dependency "json"
-  spec.add_dependency 'net/http'
   
 end
