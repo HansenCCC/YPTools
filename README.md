@@ -34,6 +34,8 @@ $ gem install yptools
 > 安装之后，可以通过【yptools help】命令来查看帮助文档
 
 ```
+chatai: use [yptools chatai ...] 快速与 chatgpt 沟通（科学上网）
+
 autocre: use [yptools autocre ...] 自动化工具命令
          use [yptools autocre -init] 构建数据库操作文件的 json 模板
          use [yptools autocre -objc ...] 根据 json 自动创建 Objective-C 数据库管理文件 .h|.m 文件。（依赖三方库 FMDB ）

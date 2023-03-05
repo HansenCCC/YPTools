@@ -10,12 +10,22 @@ require_relative 'yptools/file/yp_updatecreatedate'
 require_relative 'yptools/package/yp_package'
 require_relative 'yptools/autocre/yp_autocre'
 require_relative 'yptools/autocre/yp_autoinit'
+require_relative 'yptools/chatai/yp_chatai'
 
 class YPTools
     
     def self.cmd_dispatch(argvs)
         cmd = argvs[0]
         case cmd
+
+        when 'chatai'
+            if argvs.size > 1
+                name = argvs[1]
+                self.chatai name
+            else
+                yp_log_fail "'yptools chatai ..' 参数缺失"
+                self.help
+            end
         when 'autocre'
             if argvs.size > 1
                 name = argvs[1]
@@ -94,6 +104,10 @@ class YPTools
         YPHelp.message
     end
     
+    def self.chatai(message)
+        YPChatAI.message(message)
+    end
+
     def self.ufct
         path = `pwd`
         path = path.sub("\n","")
