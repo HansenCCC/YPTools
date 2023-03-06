@@ -23,8 +23,7 @@ class YPTools
                 name = argvs[1]
                 self.chatai name
             else
-                yp_log_fail "'yptools chatai ..' 参数缺失"
-                self.help
+                self.startChat
             end
         when 'autocre'
             if argvs.size > 1
@@ -140,6 +139,10 @@ class YPTools
     
     def self.autoinit
         YPAutoInit.createObjcInitJson
+    end
+
+    def self.startChat 
+        YPChatAI.startChatAI()
     end
     
 end
