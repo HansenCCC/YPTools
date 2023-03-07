@@ -3,7 +3,8 @@ class YPHelp
   def self.message
     puts %q{
       
-      chatai: use [yptools chatai ...] 快速与 chatgpt 沟通（科学上网）
+      chatai: use [yptools chatai] 创建会话列表与 chatgpt 聊天，会记录上下内容（科学上网）
+                  [yptools chatai ...] 快速与 chatgpt 沟通，不会记录上下内容
 
       autocre: use [yptools autocre ...] 自动化工具命令
                use [yptools autocre -objc ...] 根据 json 自动创建 Objective-C 数据库操作文件 .h|.m 文件。（依赖三方库 FMDB ）
