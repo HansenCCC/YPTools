@@ -35,7 +35,8 @@ $ gem install yptools
 > 安装之后，可以通过【yptools help】命令来查看帮助文档
 
 ```
-chatai: use [yptools chatai ...] 快速与 chatgpt 沟通（科学上网）
+chatai: use [yptools chatai] 创建会话列表与 chatgpt 聊天，会记录上下内容（科学上网）
+            [yptools chatai ...] 快速与 chatgpt 沟通，不会记录上下内容
 
 autocre: use [yptools autocre ...] 自动化工具命令
          use [yptools autocre -init] 构建数据库操作文件的 json 模板
@@ -247,6 +248,11 @@ chenghengsheng, 2534550460@qq.com
 ## Log
 
 ```
+2022.11.01  1.0.17版本，增加 chatai 上下文聊天；
+2022.11.01  1.0.16版本，chatGPT 隐藏一下token(ChatGTP那边检测到GitHub有key会跟新apikey)；
+2022.11.01  1.0.15版本，处理依赖库问题，修改readme；
+2022.11.01  1.0.14版本，增加chatGPT快速聊天；
+2022.11.01  1.0.13版本，优化解析appstore下载的ipa时报错问题；
 2022.11.01  1.0.12版本，增加【yptools autocre ..】自动化工具命令，根据 json 文件自动创建管理数据库单例；
 2022.09.04  1.0.11版本，优化一下安装流程；
 2022.09.16  1.0.8版本，增加【yptools shopipa ..】命令，用于快速预览ipa一些信息；
