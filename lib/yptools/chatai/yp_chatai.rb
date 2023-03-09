@@ -151,12 +151,13 @@ class YPChatAI
             if !yp_message_response["error"]
                 created = yp_message_response["created"]
                 data = yp_message_response["data"]
+                puts ""
                 if !data.empty?
                     index = 1
                     for item in data
-                        yp_log_success "图#{index}"
-                        puts ""
+                        yp_log_success "图#{index} 【复制下面链接到浏览器打开或者 command + 鼠标左键快速打开 】"
                         yp_log_msg item["url"]
+                        index = index + 1
                         puts ""
                     end
                 else 
