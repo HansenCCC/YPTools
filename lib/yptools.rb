@@ -18,12 +18,21 @@ class YPTools
         cmd = argvs[0]
         case cmd
 
-        when 'chatai'
+        when 'chatgpt'
             if argvs.size > 1
                 name = argvs[1]
                 self.chatai name
             else
                 self.startChat
+            end
+        when 'openaiimg'
+            if argvs.size > 1
+                name = argvs[1..-1]
+                name = name.join(' ')
+                self.openaiimg name
+            else
+                yp_log_fail "'yptools openaiimg ..' 参数缺失"
+                self.help
             end
         when 'autocre'
             if argvs.size > 1
@@ -143,6 +152,10 @@ class YPTools
 
     def self.startChat 
         YPChatAI.startChatAI()
+    end
+
+    def self.openaiimg(message)
+        YPChatAI.openaiimg(message)
     end
     
 end

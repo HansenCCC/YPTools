@@ -3,8 +3,9 @@ class YPHelp
   def self.message
     puts %q{
       
-      chatai: use [yptools chatai] 创建会话列表与 chatgpt 聊天，会记录上下内容（科学上网）
-                  [yptools chatai ...] 快速与 chatgpt 沟通，不会记录上下内容
+      chatgpt: use [yptools chatgpt] 创建会话列表与 chatgpt 聊天，会记录上下内容（科学上网）
+                   [yptools chatgpt ...] 快速与 chatgpt 沟通，不会记录上下内容
+      openai:  use [yptools openaiimg ...] 根据文本描述生成图像（eg: yptools openaiimg '高冷 少妇 黑丝 短裤 真人照片' ）
 
       autocre: use [yptools autocre ...] 自动化工具命令
                use [yptools autocre -objc ...] 根据 json 自动创建 Objective-C 数据库操作文件 .h|.m 文件。（依赖三方库 FMDB ）
