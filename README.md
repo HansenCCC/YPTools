@@ -19,7 +19,7 @@ YPTools
 - [x] 混淆中更新当前目录下面文件后缀为 .h|.m 的文件创建时间
 - [x] 检查工程是否存在引用的问题
 - [x] 一行代码和ChatGPT愉快聊天
-- [x] openAI 根据描述，生成图片
+- [x] OpenAI 根据描述，生成图片
 
 ## Installation
 
