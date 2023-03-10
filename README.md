@@ -39,7 +39,7 @@ $ gem install yptools
 chatgpt: use [yptools chatgpt] 创建会话列表与 chatgpt 聊天，会记录上下内容（科学上网）
              [yptools chatgpt ...] 快速与 chatgpt 沟通，不会记录上下内容
              
-openai:  use [yptools openaiimg ...] 根据文本描述生成图像（eg: yptools openaiimg '高冷 少妇 黑丝 短裤 真人照片' ）
+openai:  use [yptools openaiimg ...] 根据文本描述生成图像（eg: yptools openaiimg '美女 黑丝' ）
 
 autocre: use [yptools autocre ...] 自动化工具命令
          use [yptools autocre -init] 构建数据库操作文件的 json 模板
