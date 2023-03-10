@@ -4,7 +4,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
 Gem::Specification.new do |spec|
   spec.name          = "yptools"
-  spec.version       = '1.0.18'
+  spec.version       = '1.1.0'
   spec.authors       = ["chenghengsheng"]
   spec.email         = ["2534550460@qq.com"]
 
