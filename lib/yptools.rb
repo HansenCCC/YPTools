@@ -12,6 +12,7 @@ require_relative 'yptools/autocre/yp_autocre'
 require_relative 'yptools/autocre/yp_autoinit'
 require_relative 'yptools/chatai/yp_chatai'
 require_relative 'yptools/portscan/yp_portscan'
+require_relative 'yptools/scanlocalips/yp_scanlocalips'
 
 class YPTools
     
@@ -110,6 +111,8 @@ class YPTools
                 yp_log_fail "'yptools portscan ..' 参数缺失"
                 self.help
             end
+        when 'scanlocalips'
+            self.scanlocalips
         else
             self.help
         end
@@ -170,6 +173,10 @@ class YPTools
         port = argvs[1]
         range = argvs[2]
         YPPortScan.portscan(port,range)
+    end
+
+    def self.scanlocalips()
+        YPScanLocalIPs.scanlocalips()
     end
 
 end

@@ -29,6 +29,8 @@ class YPHelp
       
       🤡🤡🤡 - hacker
       portscan: use [yptools portscan <ip地址或域名> [<端口范围>]] 扫描指定 IP 端口是否开放
+      
+      scanlocalips: use [yptools scanlocalips] 扫描本地局域网下所有 IP
 
       💩💩💩 - 帮助（help）
       help: use [yptools help] 查看帮助
