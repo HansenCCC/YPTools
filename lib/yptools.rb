@@ -11,6 +11,7 @@ require_relative 'yptools/package/yp_package'
 require_relative 'yptools/autocre/yp_autocre'
 require_relative 'yptools/autocre/yp_autoinit'
 require_relative 'yptools/chatai/yp_chatai'
+require_relative 'yptools/portscan/yp_portscan'
 
 class YPTools
     
@@ -102,6 +103,13 @@ class YPTools
                 yp_log_fail "'yptools xpj ..' 参数缺失"
                 self.help
             end
+        when 'portscan'
+            if argvs.size > 1
+                self.portscan argvs
+            else
+                yp_log_fail "'yptools portscan ..' 参数缺失"
+                self.help
+            end
         else
             self.help
         end
@@ -158,6 +166,12 @@ class YPTools
         YPChatAI.openaiimg(message)
     end
     
+    def self.portscan(argvs)
+        port = argvs[1]
+        range = argvs[2]
+        YPPortScan.portscan(port,range)
+    end
+
 end
 
 
