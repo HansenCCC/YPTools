@@ -13,6 +13,7 @@ require_relative 'yptools/autocre/yp_autoinit'
 require_relative 'yptools/chatai/yp_chatai'
 require_relative 'yptools/portscan/yp_portscan'
 require_relative 'yptools/scanlocalips/yp_scanlocalips'
+require_relative 'yptools/dosattack/yp_dosattack'
 
 class YPTools
     
@@ -113,6 +114,8 @@ class YPTools
             end
         when 'scanlocalips'
             self.scanlocalips
+        when 'dosattack'
+            self.dosattack argvs
         else
             self.help
         end
@@ -177,6 +180,10 @@ class YPTools
 
     def self.scanlocalips()
         YPScanLocalIPs.scanlocalips()
+    end
+
+    def self.dosattack(argvs)
+        YPDosAttack.dosattack(argvs)
     end
 
 end

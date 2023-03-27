@@ -62,7 +62,11 @@ xpj: use [yptools xpj ...] use xcodeproj api
      use [yptools xpj check] 检查当前目录项目文件是否存在引用的问题
 
 🤡🤡🤡 - hacker
+scanlocalips: use [yptools scanlocalips] 扫描本地局域网下所有 IP
+      
 portscan: use [yptools portscan <ip地址或域名> [<端口范围>]] 扫描指定 IP 端口是否开放
+
+dosattack: use [yptools dosattack <ip> <n>] DOS攻击 「警告：此方法仅用于学习使用」 ip=请求域名 n=攻击次数 （eg: yptools dosattack https://example.com 10000）
 
 💩💩💩 - 帮助（help）
 help: use [yptools help] 查看帮助
@@ -258,6 +262,7 @@ chenghengsheng, 2534550460@qq.com
 ## Log
 
 ```
+2023.03.27  1.1.3版本，增加dos攻击【仅用于学习】；
 2023.03.26  1.1.2版本，规整版本，获取当前局域网下所有的设备ip；
 2023.03.26  1.1.1版本，规整版本，增加根据ip获取端口开关情况；
 2023.03.10  1.1.0版本，规整版本，发布 1.1.0

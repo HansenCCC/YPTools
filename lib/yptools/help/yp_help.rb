@@ -28,9 +28,11 @@ class YPHelp
            use [yptools xpj check] 检查当前目录项目文件是否存在引用的问题
       
       🤡🤡🤡 - hacker
-      portscan: use [yptools portscan <ip地址或域名> [<端口范围>]] 扫描指定 IP 端口是否开放
-      
       scanlocalips: use [yptools scanlocalips] 扫描本地局域网下所有 IP
+      
+      portscan: use [yptools portscan <ip地址或域名> [<端口范围>]] 扫描指定 IP 端口是否开放
+
+      dosattack: use [yptools dosattack <ip> <n>] DOS攻击 「警告：此方法仅用于学习使用」 ip=请求域名 n=攻击次数 （eg: yptools dosattack https://example.com 10000）
 
       💩💩💩 - 帮助（help）
       help: use [yptools help] 查看帮助
