@@ -1,50 +1,37 @@
+require 'colored'
+
 class YPPortScan
-    def self.portscan(port, range) 
-        script = %Q(
-            #!/bin/bash
-            
-            if [ -n "#{range}" ]; then
-                all_port="#{range}"
-              else
-                all_port="1-65535"
-            fi
-
-            port_range=(${all_port//-/ })
-            timeout=0.02
-            ip_address=#{port}
-
-            port_range+=(#{range})
-                
-            echo "正在扫描 ${ip_address} 的端口 ${port_range[0]} 到 ${port_range[1]}..."
-            echo ${port_range[1]}
-          
-            open_ports=()
-            closed_ports=()
-          
-            for ((port = ${port_range[0]}; port <= ${port_range[1]}; port++)); do
-              (echo >/dev/tcp/${ip_address}/${port}) >/dev/null 2>&1 &
-              pid=$!
-              (
-                sleep ${timeout}
-                kill ${pid} >/dev/null 2>&1
-              ) &
-              timer=$!
-              if wait ${pid} 2>/dev/null; then
-                echo "\\033[32m${port} 是开放的\\033[0m"
-                open_ports+=($port)
-              else
-                echo "\\033[31m${port} 是关闭的\\033[0m"
-                closed_ports+=($port)
-              fi
-              kill ${timer} >/dev/null 2>&1
-            done
-          
-            allCount=$((${#open_ports[@]} + ${#closed_ports[@]}))
-          
-            echo ${allCount} "个端口扫描完成。"
-            echo "共有 ${#open_ports[@]} 个端口是开放的，${#closed_ports[@]} 个端口是关闭的。"
-            echo "开放的端口: " "\\033[32m${open_ports[@]}\\033[0m"
-          )
-          system(script)
+  def self.portscan(address, range)
+    ip_address = address
+    if range.nil? || range.empty? || range == "-d" || range == "-default"
+      port_range = [21, 22, 23, 25, 53, 80, 81, 88, 110, 111, 135, 139, 143, 161, 389, 443, 445, 465, 514, 587, 631, 993, 995, 1080, 1194, 1433, 1521, 2049, 2082, 2083, 2181, 2222, 2375, 2376, 3389, 3690, 4443, 5432, 5900, 5984, 6379, 7001, 7002, 8080, 8081, 8086, 8443, 8888, 9090, 9200, 9300, 10000, 11211, 15672, 27017, 28017, 50000, 50070, 50075, 50090]
+      yp_log_doing "正在扫描 #{ip_address} 常用的端口"
+    else
+      temp_port_range = range.split("-").map(&:to_i)
+      yp_log_doing "正在扫描 #{ip_address} 的端口 #{temp_port_range.min} 到 #{temp_port_range.max}..."
+      if temp_port_range.length == 1 
+        port_range = (temp_port_range[0]..temp_port_range[0]).to_a
+      elsif temp_port_range.length == 2 
+        port_range = (temp_port_range[0]..temp_port_range[1]).to_a
+      end
     end
+    
+    open_ports = []
+    closed_ports = []
+
+    port_range.each do |port|
+      `nc -w 1 -z #{ip_address} #{port} 2>&1 | grep succeeded`
+      if $?.success?
+        yp_log_success "#{port} 是开放的"
+        open_ports << port
+      else
+        yp_log_fail "#{port} 是关闭的"
+        closed_ports << port
+      end
+    end
+
+    all_count = open_ports.length + closed_ports.length
+    yp_log_doing "共有 #{open_ports.length} 个端口是开放的，#{closed_ports.length} 个端口是关闭的。"
+    yp_log_success "#{all_count} 个端口扫描完成，" +  "开放的端口: " "#{open_ports}"
+  end
 end
