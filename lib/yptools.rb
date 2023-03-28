@@ -14,6 +14,7 @@ require_relative 'yptools/chatai/yp_chatai'
 require_relative 'yptools/portscan/yp_portscan'
 require_relative 'yptools/scanlocalips/yp_scanlocalips'
 require_relative 'yptools/dosattack/yp_dosattack'
+require_relative 'yptools/unziptools/yp_unziptools'
 
 class YPTools
     
@@ -116,6 +117,13 @@ class YPTools
             self.scanlocalips
         when 'dosattack'
             self.dosattack argvs
+        when 'unzip'
+            if argvs.size > 1
+                self.unzip argvs
+            else
+                yp_log_fail "'yptools unzip ..' 参数缺失"
+                self.help
+            end
         else
             self.help
         end
@@ -184,6 +192,10 @@ class YPTools
 
     def self.dosattack(argvs)
         YPDosAttack.dosattack(argvs)
+    end
+
+    def self.unzip(argvs) 
+        YPUnzipTools.unzip(argvs)
     end
 
 end

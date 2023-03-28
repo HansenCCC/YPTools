@@ -32,6 +32,8 @@ class YPHelp
 
       dosattack: use [yptools dosattack <ip> <n>] DOS攻击 「警告：此方法仅用于学习使用」 ip=请求域名 n=攻击次数 （eg: yptools dosattack https://example.com 10000）
 
+      unzip: use [yptools unzip <文件>] 分析压缩文件，破解密码。【扩展说明：n='0-10' a='a-z' A='A-Z' s='特殊字符'】(eg：yptools unzip -n -a -A file.zip)
+
       💩💩💩 - 帮助（help & update）
       update: use [yptools update] 更新yptools
 
