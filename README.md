@@ -44,13 +44,7 @@ $ gem install yptools
 > 安装之后，可以通过【yptools help】命令来查看帮助文档
 
 ```
-🤖🤖🤖 - 智能聊天、绘画（OpenAI）
-chatgpt: use [yptools chatgpt] 创建会话列表与 chatgpt 聊天，会记录上下内容（科学上网）
-             [yptools chatgpt ...] 快速与 chatgpt 沟通，不会记录上下内容
-             
-openai:  use [yptools openaiimg ...] 根据文本描述生成图像（eg: yptools openaiimg '美女 黑丝' ）
-
-🚀🚀🚀 - iOS开发者（IOS Developer）
+🍎🍎🍎 - iOS开发者（IOS Developer）
 autocre: use [yptools autocre ...] 自动化工具命令
      use [yptools autocre -objc ...] 根据 json 自动创建 Objective-C 数据库操作文件 .h|.m 文件。（依赖三方库 FMDB ）
      use [yptools autocre -init] 构建数据库操作文件的json模板
@@ -61,21 +55,27 @@ mgc: use [yptools mgc suffix] 在当前目录生成垃圾代码（当前目录�
 
 showipa: use [yptools showipa ...] 用于解析ipa文件
 
-update: use [yptools update] 更新yptools
-
 ufct: use [yptools ufct] 更新当前目录下面文件后缀为.h|.m 的文件创建时间
 
 xpj: use [yptools xpj ...] use xcodeproj api
      use [yptools xpj check] 检查当前目录项目文件是否存在引用的问题
 
+🤖🤖🤖 - 智能聊天、绘画（OpenAI）
+chatgpt: use [yptools chatgpt] 创建会话列表与 chatgpt 聊天，会记录上下内容（科学上网）
+         use  [yptools chatgpt ...] 快速与 chatgpt 沟通，不会记录上下内容
+
+openai: use [yptools openaiimg ...] 根据文本描述生成图像（eg: yptools openaiimg '老虎和狮子大战' ）
+
 🤡🤡🤡 - hacker
 scanlocalips: use [yptools scanlocalips] 扫描本地局域网下所有 IP
-      
+
 portscan: use [yptools portscan <ip地址或域名> [<端口范围>]] 扫描指定 IP 端口是否开放
 
 dosattack: use [yptools dosattack <ip> <n>] DOS攻击 「警告：此方法仅用于学习使用」 ip=请求域名 n=攻击次数 （eg: yptools dosattack https://example.com 10000）
 
-💩💩💩 - 帮助（help）
+💩💩💩 - 帮助&更新（help & update）
+update: use [yptools update] 更新yptools
+
 help: use [yptools help] 查看帮助
 ```
 
