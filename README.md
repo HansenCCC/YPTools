@@ -12,14 +12,22 @@ YPTools
 
 > YPTools 能干嘛？
 
+🚀🚀🚀 - iOS开发者（IOS Developer）
 - [x] 根据 json 创建数据库管理类（依赖于<FMDB/FMDB.h>框架）
 - [x] 为 Xcode 创建 OC 语言的 mvvm 的模板
 - [x] 快速解析 IPA 文件
 - [x] 混淆中给 OC 代码注入大量垃圾代码
 - [x] 混淆中更新当前目录下面文件后缀为 .h|.m 的文件创建时间
 - [x] 检查工程是否存在引用的问题
-- [x] 一行代码和ChatGPT愉快聊天
-- [x] OpenAI 根据描述，生成图片
+
+🤖🤖🤖 - 智能聊天、绘画（OpenAI）
+- [x] 创建会话列表与 chatgpt 聊天，会记录上下内容（需要科学上网）
+- [x] OpenAI 根据文本描述生成图像
+
+🤡🤡🤡 - hacker
+- [x] 扫描本地局域网下所有 IP
+- [x] 扫描指定 IP 端口是否开放
+- [x] DOS攻击（仅用于学习）
 
 ## Installation
 
@@ -41,7 +49,6 @@ chatgpt: use [yptools chatgpt] 创建会话列表与 chatgpt 聊天，会记录�
              [yptools chatgpt ...] 快速与 chatgpt 沟通，不会记录上下内容
              
 openai:  use [yptools openaiimg ...] 根据文本描述生成图像（eg: yptools openaiimg '美女 黑丝' ）
-             [yptools chatgpt ...] 快速与 chatgpt 沟通，不会记录上下内容
 
 🚀🚀🚀 - iOS开发者（IOS Developer）
 autocre: use [yptools autocre ...] 自动化工具命令
