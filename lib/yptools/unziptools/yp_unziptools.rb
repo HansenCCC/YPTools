@@ -55,6 +55,7 @@ class YPUnzipTools
     end
 
     def self.generate_passwords(filename, length, characters, prefix = "", count = 0)
+        sleep(0.01)
         # 如果密码长度为0，直接返回前缀并增加计数器
         if length == 0
           result = self.unzip_file(filename, prefix)
