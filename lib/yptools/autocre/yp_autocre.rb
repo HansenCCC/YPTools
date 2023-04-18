@@ -894,7 +894,7 @@ class YPAutoCreate
             end
         }
         
-        recordsNameTemp.push "key"
+        recordsNameTemp.push "@(key)"
         
         valueName = "(" + valueNameTemp.join(", ") + ")"
         recordsName = "(" + recordsNameTemp.join(", ") + ")"
