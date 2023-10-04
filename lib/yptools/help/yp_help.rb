@@ -19,6 +19,8 @@ class YPHelp
       xpj: use [yptools xpj ...] use xcodeproj api
            use [yptools xpj check] 检查当前目录项目文件是否存在引用的问题
 
+      png2jpeg: use [yptools png2jpeg ...] 将当前目录下面的png转为jpeg格式（目的可以用于减少文件大小，方便上传）
+
       🤖🤖🤖 - 智能聊天、绘画（OpenAI）
       chatgpt: use [yptools chatgpt] 创建会话列表与 chatgpt 聊天，会记录上下内容（科学上网）
                    [yptools chatgpt ...] 快速与 chatgpt 沟通，不会记录上下内容

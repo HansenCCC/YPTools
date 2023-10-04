@@ -15,6 +15,7 @@ require_relative 'yptools/portscan/yp_portscan'
 require_relative 'yptools/scanlocalips/yp_scanlocalips'
 require_relative 'yptools/dosattack/yp_dosattack'
 require_relative 'yptools/unziptools/yp_unziptools'
+require_relative 'yptools/png2jpeg/yp_png2jpeg'
 
 class YPTools
     
@@ -77,12 +78,12 @@ class YPTools
                 yp_log_fail "'yptools mgc ..' 参数缺失"
                 self.help
             end
-        when 'install'
+        when 'png2jpeg'
             if argvs.size > 1
                 name = argvs[1]
-                self.install name
+                self.png2jpeg name
             else
-                yp_log_fail "'yptools install ..' 参数缺失"
+                yp_log_fail "'yptools png2jpeg ..' 参数缺失"
                 self.help
             end
         when 'showipa'
@@ -196,6 +197,10 @@ class YPTools
 
     def self.unzip(argvs) 
         YPUnzipTools.unzip(argvs)
+    end
+
+    def self.png2jpeg(path)
+        YPPng2Jpeg.png2jpeg(path)
     end
 
 end
